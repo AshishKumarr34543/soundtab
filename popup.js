@@ -155,3 +155,4 @@ function updateUI() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
