@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>SoundTab</h1>
+      <span id="domain-display"></span>
+    </header>
+
+    <div id="current-section">
+      <span id="current-label">Current Soundscape</span>
+      <div id="current-badge">
+        <span id="current-icon"></span>
+        <span id="current-name"></span>
+      </div>
+    </div>
+
+    <div id="toggle-section">
+      <label>
+        <span>Enable audio on this site</span>
+        <input type="checkbox" id="enable-toggle" checked>
+      </label>
+    </div>
+
+    <div id="volume-section">
+      <label>Volume</label>
+      <input type="range" id="volume-slider" min="0" max="100" value="50">
+      <span id="volume-value">50%</span>
+    </div>
+
+    <div id="soundscapes-section">
+      <label id="pick-label">Choose a soundscape for this domain</label>
+      <div id="soundscape-grid"></div>
+      <button id="reset-btn">Reset to auto-detect</button>
+    </div>
+
+    <footer>
+      <span>SoundTab v1.0</span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

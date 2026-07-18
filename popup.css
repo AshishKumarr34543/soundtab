@@ -1,0 +1,58 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 340px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: #111;
+  color: #eee;
+  font-size: 14px;
+}
+#app { padding: 16px; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+header h1 { font-size: 18px; font-weight: 700; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#domain-display { font-size: 12px; color: #888; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+#current-section { background: #1a1a2e; border-radius: 12px; padding: 12px; margin-bottom: 14px; }
+#current-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+#current-badge { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+#current-icon { font-size: 22px; }
+#current-name { font-size: 16px; font-weight: 600; }
+
+#toggle-section { margin-bottom: 14px; }
+#toggle-section label { display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+#toggle-section input[type="checkbox"] { width: 18px; height: 18px; accent-color: #667eea; }
+
+#volume-section { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+#volume-section label { font-size: 12px; color: #aaa; min-width: 50px; }
+#volume-slider { flex: 1; accent-color: #667eea; }
+#volume-value { min-width: 36px; text-align: right; font-size: 12px; color: #aaa; }
+
+#pick-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: block; }
+#soundscape-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+.soundscape-card {
+  background: #1a1a2e;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.soundscape-card:hover { background: #222244; }
+.soundscape-card.active { border-color: #667eea; background: #1e1e3a; }
+.soundscape-card .icon { font-size: 20px; display: block; margin-bottom: 4px; }
+.soundscape-card .name { font-size: 11px; color: #bbb; }
+
+#reset-btn {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+#reset-btn:hover { background: #1a1a2e; color: #eee; border-color: #555; }
+
+footer { margin-top: 14px; text-align: center; font-size: 10px; color: #555; }
