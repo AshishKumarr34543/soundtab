@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "SoundTab - Ambient Website Soundscapes",
+  "version": "1.0",
+  "description": "Assigns ambient background music/soundscapes to websites based on their content. News gets thriller music, Wikipedia gets library ambiance, social media gets arcade sounds.",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["audio-engine.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [{
+    "resources": ["audio-engine.js"],
+    "matches": ["<all_urls>"]
+  }],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SoundTab"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
