@@ -36,17 +36,20 @@ const CONTENT_KEYWORDS = {
 let overrides = {};
 let disabled = {};
 let volumes = {};
+let globallyMuted = false;
 
-chrome.storage.local.get(['overrides', 'disabled', 'volumes'], (r) => {
+chrome.storage.local.get(['overrides', 'disabled', 'volumes', 'globallyMuted'], (r) => {
   overrides = r.overrides || {};
   disabled = r.disabled || {};
   volumes = r.volumes || {};
+  globallyMuted = r.globallyMuted === true;
 });
 
 chrome.storage.onChanged.addListener((changes) => {
   if (changes.overrides) overrides = changes.overrides.newValue || {};
   if (changes.disabled) disabled = changes.disabled.newValue || {};
   if (changes.volumes) volumes = changes.volumes.newValue || {};
+  if (changes.globallyMuted !== undefined) globallyMuted = changes.globallyMuted.newValue === true;
 });
 
 function extractDomain(url) {
@@ -104,6 +107,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       disabled: disabled[domain] === true,
       domain,
       volume: getVolume(url),
+      globallyMuted,
     });
     return true;
   }
@@ -126,7 +130,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === 'GET_STATE') {
     sendResponse({ overrides: { ...overrides }, disabled: { ...disabled } });
   }
-  if (msg.type === 'SET_VOLUME') {
+if (msg.type === 'SET_VOLUME') {
     volumes[msg.domain] = msg.volume;
     chrome.storage.local.set({ volumes: { ...volumes } });
     sendResponse({ ok: true });
@@ -134,6 +138,22 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.type === 'GET_VOLUME') {
     sendResponse({ volume: getVolume(msg.url || '') });
     return true;
+  }
+  if (msg.type === 'SET_GLOBAL_MUTE') {
+    globallyMuted = msg.muted === true;
+    chrome.storage.local.set({ globallyMuted });
+    chrome.tabs.query({}, (tabs) => {
+      for (const tab of tabs) {
+        if (tab.id) {
+          chrome.tabs.sendMessage(tab.id, { type: 'GLOBAL_MUTE', muted: globallyMuted }).catch(() => {});
+        }
+      }
+    });
+    sendResponse({ ok: true });
+    return true;
+  }
+  if (msg.type === 'GET_STATE') {
+    sendResponse({ overrides: { ...overrides }, disabled: { ...disabled }, globallyMuted });
   }
 });
 >>>>>>> 2ef60ee (background classifier for domains and page text)

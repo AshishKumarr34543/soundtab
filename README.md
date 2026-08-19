@@ -32,8 +32,11 @@ Click the extension icon to:
 - Pick a different soundscape for any domain
 - Adjust volume per site
 - Turn off audio completely for specific sites
+- Mute audio on every site at once
 
-Your settings are saved per domain.
+Your settings are saved per domain, and the global mute applies everywhere.
+
+Note: audio only starts after your first click on the page. That's a browser autoplay rule, not a bug.
 
 ## Install
 
