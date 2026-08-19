@@ -74,8 +74,8 @@ const SoundtabAudio = (() => {
 
   function applyVolume() {
     if (!masterGain) return;
-    const scaled = baseGain * (0.25 + userVolume * 5.75);
-    masterGain.gain.value = Math.max(0.0001, Math.min(1, scaled));
+    const scaled = Math.min(3, baseGain * (0.25 + userVolume * 10.5));
+    masterGain.gain.value = Math.max(0.0001, scaled);
   }
 
   function newMaster(base) {
@@ -97,21 +97,21 @@ const SoundtabAudio = (() => {
 
       const noise = createNoiseSource();
       addCleanup(() => { try { noise.stop(); } catch (e) {} });
-      noise.connect(createFilter('lowpass', 120, 5)).connect(createFilter('highpass', 40)).connect(g);
+      noise.connect(createFilter('lowpass', 500, 5)).connect(createFilter('highpass', 40)).connect(g);
       noise.start();
 
-      const drone = createOsc('sawtooth', 55);
+      const drone = createOsc('sawtooth', 110);
       addCleanup(() => { try { drone.stop(); } catch (e) {} });
-      drone.connect(createFilter('lowpass', 200)).connect(createGain(0.2)).connect(g);
+      drone.connect(createFilter('lowpass', 600)).connect(createGain(0.2)).connect(g);
       drone.start();
 
-      const pulse = createOsc('square', 80);
+      const pulse = createOsc('square', 160);
       addCleanup(() => { try { pulse.stop(); } catch (e) {} });
       const gPulse = createGain(0);
-      pulse.connect(createFilter('lowpass', 500)).connect(gPulse).connect(g);
+      pulse.connect(createFilter('lowpass', 800)).connect(gPulse).connect(g);
       pulse.start();
 
-      const sub = createOsc('sine', 30);
+      const sub = createOsc('sine', 50);
       addCleanup(() => { try { sub.stop(); } catch (e) {} });
       sub.connect(createGain(0.22)).connect(g);
       sub.start();

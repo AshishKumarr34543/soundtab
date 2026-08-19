@@ -1,53 +1,22 @@
-# SoundTab
+# soundtab
 
-A Chrome extension that plays ambient background music on websites based on what they're about.
+a chrome extension that adds background sounds to websites
 
-News sites get tense thriller music. Wikipedia gets library ambiance. Social media gets arcade sounds. You get the idea.
+it looks at the domain and the actual text on the page and picks a soundscape that fits. news sites get thriller sounds wiki gets library social media gets arcade etc. if it guesses wrong you can change it for that site
 
-## How it works
+all sounds are made live with web audio api so no mp3 files and its pretty light
 
-SoundTab looks at both the domain you're visiting and the actual content on the page to figure out what kind of vibe fits best. So it's not just hardcoded to specific sites - it actually reads the page.
+13 soundscapes
+thriller library arcade forest ocean cafe space rain night retro zen cave underwater
 
-## Tracks
+how to use
+open the popup from the toolbar you can pick a soundscape for the current site reset it back to auto mute a site change volume per site or mute everything
 
-13 soundscapes built with the Web Audio API (no audio files needed):
+how to install
+1 download or clone this repo
+2 go to chrome://extensions
+3 enable developer mode
+4 click load unpacked and select this folder
+5 click anywhere on the page once chrome blocks audio until you interact
 
-- Thriller - tense newsroom drones
-- Library - quiet ambient with page turns
-- Arcade - retro game bleeps
-- Forest - wind and bird chirps
-- Ocean - waves and seagulls
-- Cafe - coffee shop murmur
-- Space - ambient sci-fi drones
-- Rain - rain with thunder rumbles
-- Night - crickets and soft hum
-- Retro - synthwave basslines
-- Zen - meditation bowls
-- Cave - dripping water echoes
-- Underwater - deep bubble sounds
-
-## Customize
-
-Click the extension icon to:
-- Pick a different soundscape for any domain
-- Adjust volume per site
-- Turn off audio completely for specific sites
-- Mute audio on every site at once
-
-Your settings are saved per domain, and the global mute applies everywhere.
-
-Note: audio only starts after your first click on the page. That's a browser autoplay rule, not a bug.
-
-## Install
-
-1. Clone this repo
-2. Go to `chrome://extensions`
-3. Enable Developer Mode
-4. Click "Load unpacked" and select this folder
-
-## Tech
-
-- Chrome Extension Manifest V3
-- Web Audio API for procedural sound generation
-- No external dependencies, no audio files to download
-
+thats it
