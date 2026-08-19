@@ -50,3 +50,4 @@ Note: audio only starts after your first click on the page. That's a browser aut
 - Chrome Extension Manifest V3
 - Web Audio API for procedural sound generation
 - No external dependencies, no audio files to download
+
