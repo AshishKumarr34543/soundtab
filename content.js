@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 (function () {
   if (window.__soundtabInjected) return;
   window.__soundtabInjected = true;
@@ -248,4 +245,3 @@
     init();
   }
 })();
->>>>>>> a7722c0 (content script with page reading and badge)

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-=======
 const DEFAULT_MAP = {
   'news': 'thriller', 'bbc': 'thriller', 'cnn': 'thriller',
   'reuters': 'thriller', 'nytimes': 'thriller', 'theguardian': 'thriller',
@@ -254,4 +251,3 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   });
   return true;
 });
->>>>>>> 2ef60ee (background classifier for domains and page text)
